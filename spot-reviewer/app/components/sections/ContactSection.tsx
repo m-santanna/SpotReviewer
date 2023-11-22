@@ -1,14 +1,17 @@
 import React from 'react'
 import AnimatableDiv from '../AnimatableDiv'
 
-const LandingSection = () => {
+const ContactSection = () => {
   return (
     <div className="screen-height-minus-navbar flex justify-center items-center">
-      <AnimatableDiv className="text-6xl text-amber-200 animate-fade-up">
-        The future of skin cancer prevention
+      <AnimatableDiv
+        className="text-4xl font-bold animate-fade-up"
+        offset="-100px"
+      >
+        CONTACT
       </AnimatableDiv>
     </div>
   )
 }
 
-export default LandingSection
+export default ContactSection

@@ -4,7 +4,7 @@ import React from 'react'
 
 const NavItems = [
   {
-    name: 'Home',
+    name: 'DOT',
     path: '/',
   },
   {
@@ -23,7 +23,7 @@ const NavItems = [
 
 const Navbar = () => {
   return (
-    <nav className="h-[70px] w-screen sticky bg-slate-900 top-0 border-b border-white flex flex-col justify-center px-4">
+    <nav className="h-[70px] w-screen bg-slate-900 sticky z-10 top-0 border-b border-white flex flex-col justify-center px-4">
       <ul className="flex justify-between">
         {NavItems.map((item) => (
           <Link href={item.path} key={item.name}>
