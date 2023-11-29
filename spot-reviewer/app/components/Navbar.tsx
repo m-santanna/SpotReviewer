@@ -3,16 +3,16 @@ import Link from 'next/link'
 
 const NavItems = [
   {
-    name: 'Objectives',
-    path: '/',
+    name: 'Vision',
+    path: '/#vision',
   },
   {
     name: 'Prototype',
-    path: '/',
+    path: '/#prototype',
   },
   {
-    name: 'About',
-    path: '/about',
+    name: 'Background',
+    path: '/#background',
   },
 ]
 

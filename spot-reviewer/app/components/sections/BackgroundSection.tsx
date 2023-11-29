@@ -6,7 +6,10 @@ import AnimatableDiv from '../AnimatableDiv'
 
 const BackgroundSection = () => {
   return (
-    <div className="screen-height-minus-navbar test flex items-center justify-center">
+    <div
+      id="background"
+      className="screen-height-minus-navbar test flex items-center justify-center"
+    >
       <div className="relative w-8/12 h-[90%]">
         <AnimatableDiv className="absolute top-0 right-0 animate-fade-left">
           <div className="flex items-center">
