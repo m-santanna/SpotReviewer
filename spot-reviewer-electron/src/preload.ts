@@ -1,0 +1,38 @@
+// See the Electron documentation for details on how to use preload scripts:
+// https://www.electronjs.org/docs/latest/tutorial/process-model#preload-scripts
+import { contextBridge, ipcRenderer } from "electron"
+
+const api = {
+
+    onImageOpened: (callback: (image: string) => void) => {
+        ipcRenderer.on('image-opened', (_, image) => {
+            callback(image)
+        })
+    },
+
+    onImageRemoved: (callback: () => void) => {
+        ipcRenderer.on('image-removed', () => {
+            callback()
+        })
+    },
+    onCreateSpotTriggered: (callback: () => void) => {
+        ipcRenderer.on('create-spot-triggered', () => {
+            callback()
+        })
+    },
+    
+    navbarMessage: (message: string) => {
+        ipcRenderer.send('navbar-message', message)
+    },
+    
+    removeAllListeners: () => {
+        ipcRenderer.removeAllListeners('image-opened')
+        ipcRenderer.removeAllListeners('image-removed')
+        ipcRenderer.removeAllListeners('create-spot-triggered')
+    },
+
+} as const
+
+contextBridge.exposeInMainWorld('api', api)
+
+export type Api = typeof api
