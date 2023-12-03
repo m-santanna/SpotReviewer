@@ -43,19 +43,35 @@ const DashboardPage = ({ setPage }: { setPage: (page: string) => void }) => {
     let y = e.clientY - boundingBox.top
 
     setNewSpotPosition({ x, y })
-    console.log(`Clique na posição: x=${x}, y=${y}`)
+    console.log(`Spot position: x=${x}, y=${y}`)
   }
 
   return (
     <div className="components-screen">
-      <Navbar imageState={image} />
-      <div className="relative w-1/2 h-1/2 p-2 bg-red-400 overflow-hidden">
-        {image && (
+      <Navbar imageState={image} spotCreatable={spotCreatable} />
+      <div className="relative w-1/2 h-1/2 p-2 overflow-hidden">
+        {image ? (
           <img
-            className="object-cover w-full h-full"
+            className={
+              'object-cover w-full h-full border-2 border-white/30' +
+              (spotCreatable ? ' cursor-crosshair' : '')
+            }
             src={`data:image/jpeg;base64, ${image}`}
             alt="Imagem"
             onClick={handleImageClick}
+          />
+        ) : (
+          <div className="flex items-center justify-center w-full h-full text-2xl font-light text-white bg-slate-500 border-2 border-white/10">
+            No image selected
+          </div>
+        )}
+        {newSpotPosition.x !== null && newSpotPosition.y !== null && (
+          <button
+            className="absolute w-2 h-2 bg-blue-500 rounded-full"
+            style={{
+              left: newSpotPosition.x + 4,
+              top: newSpotPosition.y + 4,
+            }}
           />
         )}
       </div>

@@ -1,6 +1,12 @@
 import React from 'react'
 
-const Navbar = ({ imageState }: { imageState: string }) => {
+const Navbar = ({
+  imageState,
+  spotCreatable,
+}: {
+  imageState: string
+  spotCreatable: boolean
+}) => {
   //
   // Please note that everytime you add/edit/remove any of the items,
   // you must also update their case handling in the navbar-message channel in src/main/main.ts
@@ -22,7 +28,7 @@ const Navbar = ({ imageState }: { imageState: string }) => {
       name: 'Create Spot',
       id: 'createSpotNavbarButton',
       message: 'create-spot',
-      disabled: imageState === null,
+      disabled: imageState === null || spotCreatable,
     },
   ]
   return (
