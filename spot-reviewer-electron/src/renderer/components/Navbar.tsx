@@ -3,9 +3,13 @@ import React from 'react'
 const Navbar = ({
   imageState,
   spotCreatable,
+  spotPosition,
+  formState,
 }: {
   imageState: string
   spotCreatable: boolean
+  spotPosition: { x: number | null; y: number | null }
+  formState: string
 }) => {
   //
   // Please note that everytime you add/edit/remove any of the items,
@@ -13,22 +17,41 @@ const Navbar = ({
   //
   const items = [
     {
-      name: 'Open Image',
-      id: 'openImageNavbarButton',
-      message: 'open-image',
+      name: 'Select User',
+      id: 'selectUserNavbarButton',
+      message: 'select-user',
       disabled: false,
     },
     {
-      name: 'Remove Image',
-      id: 'removeImageNavbarButton',
-      message: 'remove-image',
+      name: 'Create User',
+      id: 'createUserNavbarButton',
+      message: 'create-user',
+      disabled:
+        formState === 'create-user' || spotCreatable || imageState !== null,
+    },
+    {
+      name: 'Open Mapper',
+      id: 'openMapperNavbarButton',
+      message: 'open-mapper',
+      disabled: false,
+    },
+    {
+      name: 'Close Mapper',
+      id: 'closeMapperNavbarButton',
+      message: 'close-mapper',
       disabled: imageState === null,
     },
     {
       name: 'Create Spot',
       id: 'createSpotNavbarButton',
       message: 'create-spot',
-      disabled: imageState === null || spotCreatable,
+      disabled: spotCreatable || imageState === null,
+    },
+    {
+      name: 'Save New Spot',
+      id: 'saveSpotNavbarButton',
+      message: 'save-new-spot-position',
+      disabled: spotPosition.x === null || spotPosition.y === null,
     },
   ]
   return (

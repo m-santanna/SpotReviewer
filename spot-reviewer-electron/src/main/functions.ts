@@ -13,5 +13,5 @@ export const openImageDialog = async (browserWindow: BrowserWindow) => {
 
 export const readImage = async (browserWindow: BrowserWindow, path: string) => {
     const image = await readFile(path, { encoding: 'base64' })
-    browserWindow.webContents.send('image-opened', image)
+    browserWindow.webContents.send('mapper-opened', image)
 }

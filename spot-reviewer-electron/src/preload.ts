@@ -4,14 +4,14 @@ import { contextBridge, ipcRenderer } from "electron"
 
 const api = {
 
-    onImageOpened: (callback: (image: string) => void) => {
-        ipcRenderer.on('image-opened', (_, image) => {
+    onMapperOpened: (callback: (image: string) => void) => {
+        ipcRenderer.on('mapper-opened', (_, image) => {
             callback(image)
         })
     },
 
-    onImageRemoved: (callback: () => void) => {
-        ipcRenderer.on('image-removed', () => {
+    onMapperClosed: (callback: () => void) => {
+        ipcRenderer.on('mapper-closed', () => {
             callback()
         })
     },

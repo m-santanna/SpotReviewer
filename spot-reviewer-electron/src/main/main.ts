@@ -45,14 +45,14 @@ ipcMain.on('navbar-message', async (event, message) => {
   const browserWindow = BrowserWindow.fromWebContents(event.sender)
   if (!browserWindow) return
 
-  if (message === 'open-image') {
+  if (message === 'open-mapper') {
       const result = await openImageDialog(browserWindow)
       if (result.canceled) return
       const path = result.filePaths[0]
       readImage(browserWindow, path)
   }
-  if (message === 'remove-image') {
-      browserWindow.webContents.send('image-removed')
+  if (message === 'close-mapper') {
+      browserWindow.webContents.send('mapper-closed')
   }
   if (message === 'create-spot') {
       browserWindow.webContents.send('create-spot-triggered')
