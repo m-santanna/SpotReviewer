@@ -44,8 +44,8 @@ const DashboardPage = ({ setPage }: { setPage: (page: string) => void }) => {
     console.log(`Spot position: x=${x}, y=${y}`)
   }
 
-  const handleFormState = (state: string) => {
-    switch (state) {
+  const handleFormState = (formState: string) => {
+    switch (formState) {
       case 'create-user':
         return (
           <div className="flex items-center justify-center w-full h-full text-2xl font-light text-white bg-slate-500 border-2 border-white/10">
@@ -87,7 +87,7 @@ const DashboardPage = ({ setPage }: { setPage: (page: string) => void }) => {
             <img
               className={
                 'object-cover w-full h-full border-2 border-white/30' +
-                (spotCreatable ? ' cursor-crosshair' : '')
+                (spotCreatable ? 'cursor-crosshair' : '')
               }
               src={`data:image/jpeg;base64, ${mapper}`}
               alt="Mapper"
